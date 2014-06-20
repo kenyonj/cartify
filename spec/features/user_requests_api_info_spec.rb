@@ -6,6 +6,7 @@ feature "User requests api info" do
     message = "Welcome to Cartify"
 
     visit api_v1_info_path(api_key: api.api_key)
+    json  = JSON.parse(page.body)
 
     expect(json).to have_key("message")
     expect(json["message"]).to eq message
@@ -16,6 +17,7 @@ feature "User requests api info" do
     message = "Sorry, you either did not supply an API key, or it is invalid."
 
     visit api_v1_info_path(api_key: api_key)
+    json  = JSON.parse(page.body)
 
     expect(json).to have_key("message")
     expect(json["message"]).to eq message

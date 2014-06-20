@@ -6,14 +6,13 @@ class ApplicationController < ActionController::Base
   private
 
   def authorize_api_key
-    api_key = get_api_from_params
-    api = Api.find_by(api_key: api_key) || NullApi.new
+    api = Api.find_by(api_key: api_key_from_params) || NullApi.new
     unless api.active?
       return_unauthorized
     end
   end
 
-  def get_api_from_params
+  def api_key_from_params
     params[:api_key]
   end
 
