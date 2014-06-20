@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'title'
 gem 'uglifier'
 gem 'unicorn'
+gem 'active_model_serializers'
 
 group :development do
   gem 'foreman'
